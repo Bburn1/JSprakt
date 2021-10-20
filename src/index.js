@@ -37,7 +37,7 @@ var app = new Vue({
                      this.buy=this.currency[i].buy;
            }
            this.end_value=(this.start_value*this.sell)/this.buy;
-           this.result = this.start_value + " " + this.start_ccy + " --> " + this.end_value + " " + this.end_ccy;
+           this.result = this.start_value + " " + this.start_ccy + "  ===  " + this.end_value + " " + this.end_ccy;
            
        }
     }
