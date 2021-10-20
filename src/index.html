@@ -28,14 +28,25 @@
             </table>
             <br>Введіть потрібне прізвище: <input v-model="search">
 			<hr>
+
+
             <h3>Currency converter</h3>
-            
             <br>Enter amount: <input type="number" value="100" v-model="start_value">
             <br>Convert from <input list="currency"  v-model="start_ccy">
             <datalist id="currency">
-              <option value="USD">
-              <option value="EUR">
-              <option value="RUR">
+             
+              <option value="CAD">
+              <option value="CHF">
+                <option value="CZK">
+                    <option value="GBP">
+                        <option value="ILS">
+                            <option value="JPY">
+                                <option value="NOK">
+                                    <option value="PLZ">
+                                        <option value="SEK">
+                                            <option value="BTC">
+                                            
+                                            
             </datalist>
              <input list="currency" v-model="end_ccy">
             <button v-on:click="convert">Convert to</button>

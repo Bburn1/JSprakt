@@ -20,7 +20,7 @@ var app = new Vue({
             console.log(response.data);
             this.students = response.data;
         })
-        axios.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5").then((response)=>{
+        axios.get("https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=4").then((response)=>{
             console.log(response.data);
             this.currency = response.data;
         })
