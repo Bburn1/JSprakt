@@ -13,9 +13,18 @@
                     <td v-bind:style="stud.name.indexOf(search)>-1 && search.length >0 ? 'background-color:#CA2C2C' : 'background-color:#fff'">{{stud.name}}</td>
                     <td>{{stud.group}}</td>
                     <td>{{stud.mark}}</td>
+                    <td><a href="#" v-on:click="deleteStudent(stud._id)">Dell</a></td>
                     <td><input type="checkbox" v-bind:checked="stud.isDonePr"></td>
                 </tr>
             </table>
+            <br> <h2>Добавить студента : </h2>
+            <br> Name  <input v-model="name">
+            <br> Group <input v-model="group">
+            <br> PR <input type="checkbox" v-model="isDonePr">
+            <br> <button v-on:click="addStudent">Add</button>
+
+
+
             <br>Введіть потрібне прізвище: <input v-model="search">
 			<hr>
 
@@ -56,6 +65,10 @@ import VueAxios from 'vue-axios'
         return {
         students: [],
         currency:[],
+        name:"",
+        group:"",
+        studId:"",
+        isDonePr:"",
         search:"",
         start_ccy:"",
         end_ccy:"",
@@ -74,8 +87,30 @@ import VueAxios from 'vue-axios'
             console.log(response.data);
             this.currency = response.data;
         })
+        
+    
     },
     methods:{
+        addStudent:function(){
+            Vue.axios.post("http://46.101.212.195:3000/students", {
+               
+            isDonePr: this.isDonePr,
+            name: this.name,
+            group: this.group,
+
+            })
+            axios.get("http://46.101.212.195:3000/students").then((response) => {
+                this.students = response.data;
+            }) },
+
+            deleteStudent:function(id){
+            Vue.axios.delete("http://46.101.212.195:3000/students/"+id, {
+            })
+            axios.get("http://46.101.212.195:3000/students").then((response)=>{
+                this.students = response.data;
+            })
+            },
+
        deleteRow:function(id){
             this.students =  this.students.filter(stud => stud.id!=id)
        },
