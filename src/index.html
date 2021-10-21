@@ -3,54 +3,13 @@
     <head>
         <meta charset="utf-8">
         <style>
-            td,th{
-                border: 2px solid;
-            }
+           
         </style>
     </head>
     <body>
-        <div id = "app1">
-            <table>
-                <tr>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Group</th>
-                    <th>Mark</th>
-                    <th>PR is Done</th>
-                </tr>
-                <tr v-for="stud in students">
-                    <td><img v-bind:src="stud.photo" width="50px"></td>
-                    <td v-bind:style="stud.name.indexOf(search)>-1 && search.length >0 ? 'background-color:#CA2C2C' : 'background-color:#fff'">{{stud.name}}</td>
-                    <td>{{stud.group}}</td>
-                    <td>{{stud.mark}}</td>
-                    <td><input type="checkbox" v-bind:checked="stud.isDonePr"></td>
-                </tr>
-            </table>
-            <br>Введіть потрібне прізвище: <input v-model="search">
-			<hr>
-
-
-            <h3>Currency converter</h3>
-            <br>Enter amount: <input type="number" value="100" v-model="start_value">
-            <br>Convert from <input list="currency"  v-model="start_ccy">
-            <datalist id="currency">
-             
-              <option value="CAD">
-              <option value="CHF">
-                <option value="CZK">
-                    <option value="GBP">
-                        <option value="ILS">
-                            <option value="JPY">
-                                <option value="NOK">
-                                    <option value="PLZ">
-                                        <option value="SEK">
-                                            <option value="BTC">
-                                            
-                                            
-            </datalist>
-             <input list="currency" v-model="end_ccy">
-            <button v-on:click="convert">Convert to</button>
-            <br>{{result}}
+        
+        <div id = "app">
+            
         </div>
        
         <script src="main.js"></script>
