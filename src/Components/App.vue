@@ -8,15 +8,22 @@
                     <th>Mark</th>
                     <th>PR is Done</th>
                 </tr>
+
                 <tr v-for="stud in students" v-bind:key="stud._id">
                     <td><img v-bind:src="stud.photo" width="50px"></td>
-                    <td v-bind:style="stud.name.indexOf(search)>-1 && search.length >0 ? 'background-color:#CA2C2C' : 'background-color:#fff'">{{stud.name}}</td>
-                    <td>{{stud.group}}</td>
-                    <td>{{stud.mark}}</td>
-                    <td><a href="#" v-on:click="deleteStudent(stud._id)">Dell</a></td>
-                    <td><input type="checkbox" v-bind:checked="stud.isDonePr"></td>
+
+                    <td v-bind:style="stud.name.indexOf(search)>-1 && search.length >0 ? 'background-color:#CA2C2C' : 'background-color:#fff'">{{stud.name}}<input v-model="name1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>                           
+                    <td>{{stud.group}} <input v-model="group1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
+                    <td>{{stud.mark}}<input v-model="mark1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
+                    <td><input type="checkbox" v-bind:checked="stud.isDonePr"> <input type="checkbox" v-model="isDonePr1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
+                    <td> <a href="#" v-on:click="deleteStudent(stud._id)">Видалити</a></td>
+                    <td><button v-on:click="getData(stud._id,stud.mark,stud.isDonePr,stud.name, stud.group)" ><img src="1.png" width="20px"></button>
+                    <button v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'">edit</button></td>
                 </tr>
             </table>
+
+
+
             <br> <h2>Добавить студента : </h2>
             <br> Name  <input v-model="name">
             <br> Group <input v-model="group">
@@ -66,10 +73,15 @@ import VueAxios from 'vue-axios'
         return {
         students: [],
         currency:[],
+        mark1: "",
+        name1:"",
+        group1:"",
+        isDonePr1:false,
+        showInput:false,
         name:"",
         group:"",
         studId:"",
-        isDonePr:"",
+        isDonePr:false,
         search:"",
         mark: 0,
         start_ccy:"",
@@ -93,6 +105,25 @@ import VueAxios from 'vue-axios'
     
     },
     methods:{
+        updateStudent:function(){
+            Vue.axios.put("http://46.101.212.195:3000/students/"+this.studId, {
+               mark: this.mark1,
+                isDonePr: this.isDonePr1,
+                  name: this.name1,
+                group: this.group1,
+            })
+            axios.get("http://46.101.212.195:3000/students").then((response)=>{
+                this.students = response.data;
+            })
+        },
+        getData: function(id,mark, isDone,name,group){
+            this.studId = id;
+            this.mark1 = mark;
+           this.isDonePr1 = isDone;
+            this.name1 = name;
+            this.group1 = group;
+            this.showInput = true;
+        },
         addStudent:function(){
             Vue.axios.post("http://46.101.212.195:3000/students", {
                
@@ -114,14 +145,7 @@ import VueAxios from 'vue-axios'
             })
             },
 
-        /*updateStudent:function(){
-            Vue.axios.put("http://46.101.212.195:3000/students/"+this.studId, {
-                
-            })
-            axios.get("http://46.101.212.195:3000/students").then((response)=>{
-                this.students = response.data;
-            })
-        },*/
+        
 
        deleteRow:function(id){
             this.students =  this.students.filter(stud => stud.id!=id)
