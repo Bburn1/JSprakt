@@ -114,6 +114,15 @@ import VueAxios from 'vue-axios'
             })
             },
 
+        /*updateStudent:function(){
+            Vue.axios.put("http://46.101.212.195:3000/students/"+this.studId, {
+                
+            })
+            axios.get("http://46.101.212.195:3000/students").then((response)=>{
+                this.students = response.data;
+            })
+        },*/
+
        deleteRow:function(id){
             this.students =  this.students.filter(stud => stud.id!=id)
        },
