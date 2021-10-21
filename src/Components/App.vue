@@ -20,6 +20,7 @@
             <br> <h2>Добавить студента : </h2>
             <br> Name  <input v-model="name">
             <br> Group <input v-model="group">
+            <br> Mark <input type="number"  v-model="mark">
             <br> PR <input type="checkbox" v-model="isDonePr">
             <br> <button v-on:click="addStudent">Add</button>
 
@@ -70,6 +71,7 @@ import VueAxios from 'vue-axios'
         studId:"",
         isDonePr:"",
         search:"",
+        mark: 0,
         start_ccy:"",
         end_ccy:"",
         sell:0,
@@ -97,6 +99,7 @@ import VueAxios from 'vue-axios'
             isDonePr: this.isDonePr,
             name: this.name,
             group: this.group,
+            mark:this.mark
 
             })
             axios.get("http://46.101.212.195:3000/students").then((response) => {
