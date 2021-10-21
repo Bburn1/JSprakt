@@ -16,15 +16,15 @@
                     <td>{{stud.group}} <input v-model="group1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
                     <td>{{stud.mark}}<input v-model="mark1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
                     <td><input type="checkbox" v-bind:checked="stud.isDonePr"> <input type="checkbox" v-model="isDonePr1" v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'"></td>
-                    <td> <a href="#" v-on:click="deleteStudent(stud._id)">Видалити</a></td>
+                    <td> <a href="#" v-on:click="deleteStudent(stud._id)">Delete</a></td>
                     <td><button v-on:click="getData(stud._id,stud.mark,stud.isDonePr,stud.name, stud.group)" ><img src="1.png" width="20px"></button>
-                    <button v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'">edit</button></td>
+                    <button v-on:click="updateStudent()" v-bind:style="showInput ? 'display:inline' : 'display:none'">Edit</button></td>
                 </tr>
             </table>
 
 
 
-            <br> <h2>Добавить студента : </h2>
+            <br> <h2>Add Student : </h2>
             <br> Name  <input v-model="name">
             <br> Group <input v-model="group">
             <br> Mark <input type="number"  v-model="mark">
@@ -33,7 +33,7 @@
 
 
 
-            <br>Введіть потрібне прізвище: <input v-model="search">
+            <br>Enter second name: <input v-model="search">
 			<hr>
 
 
