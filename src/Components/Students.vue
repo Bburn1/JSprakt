@@ -12,8 +12,8 @@
                  <tr>
                 <tr v-for="stud in students" v-bind:key="stud._id" >
                     <td><img v-bind:src="stud.photo"  width="50px"></td>
-                    <td ><router-link v-bind:to="'/student-info/'+stud._id">{{stud.name}}</router-link>
-                        <div v-bind:style="idTest == stud._id ? 'display:none' : 'display:inline'">{{stud.name}}</div>
+                    <td >
+                        <div v-bind:style="idTest == stud._id ? 'display:none' : 'display:inline'"><router-link v-bind:to="'/student-info/'+stud._id">{{stud.name}}</router-link></div>
                         <input v-bind:style="idTest == stud._id ? 'display:inline' : 'display:none'"  v-model="newStudent.name">
                     </td>
                     <td>
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         <button v-on:click="get(stud._id,stud.name,stud.group,stud.isDonePr,stud.mark)">
-                            <img src="src/1.png" width="25px">
+                            <img src="/1.png" width="25px">
                         </button>
                     </td>
                     <button v-on:click="update()" v-bind:style="showInput ? 'display:inline' : 'display:none'">edit</button>
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-    
+    import VueRouter from 'vue-router'
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'

@@ -7,10 +7,10 @@ import VueAxios from 'vue-axios'
 import App from './components/App.vue'
 import Students from './components/Students.vue'
 import StudentInfo from './components/StudentInfo.vue'
-    
+Vue.use(VueRouter);
 const routes =[ 
     {path: '/', component:Students}, 
-    {path: '/student-info/:id', component: StudentInfo, props = true}, 
+    {path: '/student-info/:id', component: StudentInfo, props : true}, 
 ] 
 const router = new VueRouter({ 
    routes 
