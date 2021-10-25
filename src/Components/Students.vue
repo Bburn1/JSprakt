@@ -79,7 +79,7 @@
             </datalist>
              <input list="currency" v-model="end_ccy">
             <button v-on:click="convert">Convert to</button>
-            <br>{{result}}
+            <br>{{result}}{{end_value | roundValue}}{{end_ccy}}
    </div>
 </template>
 
@@ -196,10 +196,16 @@ import VueAxios from 'vue-axios'
                      this.buy=this.currency[i].buy;
            }
            this.end_value=(this.start_value*this.sell)/this.buy;
-           this.result = this.start_value + " " + this.start_ccy + "  ===  " + this.end_value + " " + this.end_ccy;
+           this.result = this.start_value + " " + this.start_ccy + "  ===  " ;
            
        }
-    }
+    },
+    filters:{
+            roundValue: function(value){
+                return parseFloat(value.toFixed(2));
+            },
+        }
+
 }
 
 
