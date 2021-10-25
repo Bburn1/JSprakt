@@ -1,7 +1,10 @@
 <template>
     <div>
-        {{student.name}}
-        <img v-bind:src="student.photo">
+        <td> <img v-bind:src="student.photo" width="50px"></td>
+        <td>{{student.name}}</td>
+        <td>{{student.group}}</td>
+         <td>{{student.mark}}</td>
+         <td><input type="checkbox" v-bind:checked="student.isDonePr"></td>
     </div>
 </template>
 <script>
