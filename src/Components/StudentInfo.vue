@@ -1,10 +1,20 @@
 <template>
     <div>
+        <table>
+             <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Group</th>
+                    <th>Mark</th>
+                    <th>PR is Done</th>
+                    
+                </tr>
         <td> <img v-bind:src="student.photo" width="50px"></td>
         <td>{{student.name}}</td>
         <td>{{student.group}}</td>
          <td>{{student.mark}}</td>
          <td><input type="checkbox" v-bind:checked="student.isDonePr"></td>
+         </table>
     </div>
 </template>
 <script>
