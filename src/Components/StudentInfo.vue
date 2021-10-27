@@ -1,5 +1,12 @@
 <template>
+
+
     <div>
+        <div class="theme-switches">
+          <link rel="stylesheet" href="./style.css">
+           <link rel="stylesheet" id="switcher-id" v-bind:href="chootheme == 'light' ? './light.css' : './dark.css'">
+        </div>
+
         <table>
              <tr>
                     <th>Photo</th>
@@ -46,9 +53,16 @@ mounted: function(){
   computed: {
   studentsCount () {
     return this.$store.getters.getCount
-  }
+  },
+  chootheme(){
+    return this.$store.getters.getTheme
+         },
+         
 
 },
+methods:{
+    
+}
 
 }
 </script>

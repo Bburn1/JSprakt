@@ -7,15 +7,21 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     plugins: [createPersistedState()],
     state: {
-     count: 0
+     count: 0,
+     theme:"",
    },
    mutations: {
        setCount: (state, count) => state.count = count,
+       setTheme: (state, theme) => state.theme = theme,
    },
    getters: {
        getCount: (state) =>
        {
            return state.count
+       },
+       getTheme: (state) =>
+       {
+           return state.theme
        }
    }
  })

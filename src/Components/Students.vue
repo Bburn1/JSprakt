@@ -1,5 +1,16 @@
 <template>
+    
+
    <div>
+
+       <div class="theme-switches">
+          <link rel="stylesheet" href="./style.css">
+           <link rel="stylesheet" id="switcher-id" v-bind:href="chootheme == 'light' ? './light.css' : './dark.css'">
+            <div data-theme="light" class="switch" id="switch-1" v-on:click="choseTheme('light')"></div>
+            <div data-theme="dark" class="switch" id="switch-2" v-on:click="choseTheme('dark')"></div>
+        </div>
+
+
       <table>
                 <tr>
                     <th>Photo</th>
@@ -138,7 +149,10 @@ import VueAxios from 'vue-axios'
     computed:{
           studentsCount () {
     return this.$store.getters.getCount
-        }
+        },
+        chootheme(){
+    return this.$store.getters.getTheme
+         },
 
     },
 
@@ -207,7 +221,10 @@ import VueAxios from 'vue-axios'
            this.end_value=(this.start_value*this.sell)/this.buy;
            this.result = this.start_value + " " + this.start_ccy + "  ===  " ;
            
-       }
+       },
+        choseTheme: function(theme){
+                this.$store.commit('setTheme', theme);
+            },
     },
     filters:{
             roundValue: function(value){
