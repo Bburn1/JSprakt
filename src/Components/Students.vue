@@ -159,10 +159,14 @@ import VueAxios from 'vue-axios'
 
     methods:{
        deletes:function(id){
-            Vue.axios.delete("http://46.101.212.195:3000/students/"+id, {
-            })
+         Vue.axios.delete("http://46.101.212.195:3000/students/"+id) 
+         .then((response)=> {
+
+             
             axios.get("http://46.101.212.195:3000/students").then((response)=>{
                 this.students = response.data;
+                this.$store.commit('setCount', this.students.length)
+            })
             })
            
         },
@@ -199,9 +203,11 @@ import VueAxios from 'vue-axios'
                 mark:this.mark,
             }) 
             .then((response) => { 
+
                 console.log(response.data)
                 axios.get("http://46.101.212.195:3000/students").then((response)=>{ 
                 this.students = response.data; 
+                this.$store.commit('setCount', this.students.length)
             }) 
             }) 
            
