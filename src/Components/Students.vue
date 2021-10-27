@@ -125,6 +125,7 @@ import VueAxios from 'vue-axios'
         axios.get("http://46.101.212.195:3000/students").then((response)=>{
             console.log(response.data);
             this.students = response.data;
+            this.$store.commit('setCount', this.students.length);
         })
         axios.get("https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=4").then((response)=>{
             console.log(response.data);
@@ -133,6 +134,14 @@ import VueAxios from 'vue-axios'
         
     
     },
+
+    computed:{
+          studentsCount () {
+    return this.$store.getters.getCount
+        }
+
+    },
+
     methods:{
        deletes:function(id){
             Vue.axios.delete("http://46.101.212.195:3000/students/"+id, {
