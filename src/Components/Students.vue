@@ -12,6 +12,7 @@
 
 
       <table>
+            {{studentsCount}}
                 <tr>
                     <th>Photo</th>
                     <th>Name</th>
@@ -150,7 +151,7 @@ import VueAxios from 'vue-axios'
           studentsCount () {
     return this.$store.getters.getCount
         },
-        chootheme(){
+         chootheme(){
     return this.$store.getters.getTheme
          },
 
@@ -198,11 +199,12 @@ import VueAxios from 'vue-axios'
                 mark:this.mark,
             }) 
             .then((response) => { 
-                console.log(response.data) 
-            }) 
-            axios.get("http://46.101.212.195:3000/students").then((response)=>{ 
+                console.log(response.data)
+                axios.get("http://46.101.212.195:3000/students").then((response)=>{ 
                 this.students = response.data; 
-            })
+            }) 
+            }) 
+           
              
         },
 

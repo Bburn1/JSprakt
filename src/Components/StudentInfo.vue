@@ -8,6 +8,7 @@
         </div>
 
         <table>
+          {{studentsCount}}
              <tr>
                     <th>Photo</th>
                     <th>Name</th>
@@ -46,7 +47,7 @@ mounted: function(){
         axios.get("http://46.101.212.195:3000/students/"+this.$route.params.id).then((response)=>{
              console.log(response.data);
             this.student = response.data;
-            this.$store.commit('setCount', 1);;
+            // this.$store.commit('setCount', 1);
             
         })
 },
