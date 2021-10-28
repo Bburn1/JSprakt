@@ -45,7 +45,7 @@
                         <input type="checkbox" v-bind:style="idTest == stud._id ? 'display:inline' : 'display:none'" v-model="newStudent.isDonePr">
                     </td>
                     <td>
-                        <td><a href="#" v-on:click.prevent="deleteStudent(stud._id)" v-show="stud.group==getCurrentUser.group">Видалити</a>
+                        <td><a href="#" v-on:click.prevent="deletes(stud._id)" v-show="stud.group==getCurrentUser.group">Видалити</a>
                     </td>
                     <td>
                         <button v-on:click="get(stud._id,stud.name,stud.group,stud.isDonePr,stud.mark)">
