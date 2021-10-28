@@ -25,7 +25,7 @@ const store = new Vuex.Store({
        {
            return state.theme
        },
-       getCurrentUser:(state)=>
+       getUser:(state)=>
        {
         return state.user
     }
