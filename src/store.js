@@ -9,20 +9,26 @@ const store = new Vuex.Store({
     state: {
      count: 0,
      theme:"",
+     user:null,
    },
    mutations: {
        setCount: (state, count) => state.count = count,
        setTheme: (state, theme) => state.theme = theme,
+       setUser: (state, user) => state.user = user,
    },
    getters: {
-       getCount: (state) =>
+       getCount: (state) => 
        {
            return state.count
        },
        getTheme: (state) =>
        {
            return state.theme
-       }
+       },
+       getCurrentUser:(state)=>
+       {
+        return state.user
+    }
    }
  })
  export default store;
